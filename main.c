@@ -1,6 +1,8 @@
 #include <pic32mx.h>
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include "mipslab.h"  /* Declatations for these labs */
+#include "motor.h"
+#include "sound.h"
 
 #define forever for (;;)
 
@@ -51,6 +53,8 @@ void init() {
 	SPI2CONSET = 0x8000;
 
 	display_init();
+	MOTOR_init();
+	SOUND_init();
 }
 
 int getbtns(){
