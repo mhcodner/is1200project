@@ -6,7 +6,8 @@
 #include "sound.h"
 
 #define forever for (;;)
-#define PASSWORD_LENGTH 4
+#define PASSWORD_LENGTH 5
+#define TMR2PERIOD ((80000000 / 256) / 10)
 
 int getbtns();
 void init();
@@ -17,13 +18,16 @@ void fail_message();
 int main() {
 	init();
 
-	int password[PASSWORD_LENGTH] = { 1, 2, 4, 8 }; // can not contain 0
+	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
 	int inputs = 0;
 
 	forever {
 		int btn = getbtns();
 		int previous = btn;
+		display_string(1, itoaconv(password[inputs]));
+		display_string(2, itoaconv(inputs));
 		display_btn(btn);
+		display_update();
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
@@ -92,12 +96,27 @@ void init() {
 	/* SPI2CON bit ON = 1; */
 	SPI2CONSET = 0x8000;
 
+	// Timer 2 setup
+	PR2 = TMR2PERIOD;
+	T2CONSET = 0x70; // setting the prescale
+	TMR2 = 0; // reset timer to 0
+	T2CONSET = 0x8000; // turn timer on, set bit 15 to 1
+
 	display_init();
 	MOTOR_init();
 	SOUND_init();
 }
 
 int getbtns(){
+	int timeoutcount = 0;
+
+	forever {
+		if (IFS(0) & 0x100 && ++timeoutcount == 5)
+			break;
+	}
+	IFSCLR(0) = 0x100;
+	timeoutcount = 0;
+
 	// Return an integer representation of the buttons currently pressed
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
 }
