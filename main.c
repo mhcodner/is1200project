@@ -122,6 +122,10 @@ int getbtns(){
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
 }
 
-int getsw(){
+int debug_mode() {
+	return getsw() & 0x8;
+}
+
+int getsw() {
 	return (PORTD >> 8) & 0xF;
 }
