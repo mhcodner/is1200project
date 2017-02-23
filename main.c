@@ -25,10 +25,12 @@ int main() {
 	forever {
 		int btn = getbtns();
 		int previous = btn;
-		display_string(1, itoaconv(password[inputs]));
-		display_string(2, itoaconv(inputs));
-		display_btn(btn);
-		display_update();
+		if (debug_mode()) {
+			display_string(1, itoaconv(password[inputs]));
+			display_string(2, itoaconv(inputs));
+			display_btn(btn);
+			display_update();
+		}
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
