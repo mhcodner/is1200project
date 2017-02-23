@@ -10,6 +10,7 @@
 #define TMR2PERIOD ((80000000 / 256) / 10)
 
 int getbtns();
+int getsw();
 void init();
 void display_btn();
 void unlock();
@@ -81,7 +82,7 @@ void init() {
 	TRISGCLR = 0x200;
 
 	// Enable the buttons and switches as inputs
-	TRISDSET = (0xFF << 4); 
+	TRISDSET = (0xFF << 4);
 	TRISFSET = 2;
 
 	/* Set up SPI as master */
@@ -119,4 +120,8 @@ int getbtns(){
 
 	// Return an integer representation of the buttons currently pressed
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
+}
+
+int getsw(){
+	return (PORTD >> 8) & 0xF;
 }
