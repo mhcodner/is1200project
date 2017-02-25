@@ -52,12 +52,14 @@ void fail_message() {
 	char* message = "Sorry try again!";
 	display_string(0, message);
 	display_update();
+	soundfail();
 }
 
 void unlock() {
 	char* message = "Congratulations!";
 	display_string(0, message);
 	display_update();
+	soundunlock();
 }
 
 void display_btn(int btn) {
