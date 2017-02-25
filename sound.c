@@ -8,7 +8,7 @@ void SOUND_init() {
 void SOUND_beep(int freq, int length) {
 
 }
-void soundfailure(){
+void soundfail(){
  SOUND_beep (200, 2);
  SOUND_beep (400, 1);
  SOUND_beep (200, 2);
