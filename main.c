@@ -32,6 +32,7 @@ int main() {
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
 		if (btn != 0 && btn == password[inputs]) {
+			btnpress(btn);
 			inputs++;
 		}
 		else if (btn != 0 && btn != password[inputs]) {
