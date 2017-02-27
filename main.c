@@ -10,6 +10,7 @@
 #define TMR2PERIOD ((80000000 / 256) / 10)
 
 int getbtns();
+int getswitches();
 void init();
 void display_btn();
 void unlock();
@@ -17,8 +18,20 @@ void fail_message();
 
 int main() {
 	init();
-
+	int n, i;
+  	time_t t;
+	srand((unsigned) time(&t));
+	//Robin mode is activated if any of the switches is on
+	if (getswitches ==0){
 	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
+	}
+	else {
+	n =rand() % 20	
+	int password[n];
+		for (i=0, i<n, i++){
+		password[i]=(rand() % 7) +1;	
+		}
+	}	
 	int inputs = 0;
 
 	forever {
@@ -37,7 +50,7 @@ int main() {
 		}
 		else if (btn != 0 && btn != password[inputs]) {
 			inputs = 0;
-			fail_message();
+			fail_message();		
 		}
 
 		if (inputs == PASSWORD_LENGTH) {
@@ -45,22 +58,38 @@ int main() {
 			unlock();
 		}
 	}
-
 	return 0;
 }
 
 void fail_message() {
+	if (getswitches ==0){
 	char* message = "Sorry try again!";
 	display_string(0, message);
 	display_update();
 	soundfail();
+	}
+	else {
+	char* message = "Rip! BS!";
+	display_string(0, message);
+	display_update();
+	soundfailR();
+	}
 }
 
+
 void unlock() {
+	if (getswitches ==0){
 	char* message = "Congratulations!";
 	display_string(0, message);
 	display_update();
 	soundunlock();
+	}
+	else{
+	char* message = "IS LIT FAAAAM!";
+	display_string(0, message);
+	display_update();
+	soundunlockR();	
+	}
 }
 
 void display_btn(int btn) {
@@ -122,4 +151,10 @@ int getbtns(){
 
 	// Return an integer representation of the buttons currently pressed
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
+}
+
+int getswitches(){
+int switches= PORTD & 0xf00;
+switches= switches >> 8;
+return switches;
 }
