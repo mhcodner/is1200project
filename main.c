@@ -22,7 +22,7 @@ int main() {
   	time_t t;
 	srand((unsigned) time(&t));
 	//Robin mode is activated if any of the switches is on
-	if (getswitches ==0){
+	if (getswitches() ==0){
 	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
 	}
 	else {
