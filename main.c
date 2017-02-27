@@ -10,7 +10,7 @@
 #define TMR2PERIOD ((80000000 / 256) / 10)
 
 int getbtns();
-int getsw();
+int getswitches();
 void init();
 void display_btn();
 void unlock();
@@ -18,8 +18,20 @@ void fail_message();
 
 int main() {
 	init();
-
-	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
+	int n, i;
+	time_t t;
+	srand((unsigned) time(&t));
+	//Robin mode is activated if any of the switches is on
+	if (getswitches() == 0) {
+		int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
+	}
+	else {
+	n = rand() % 20;
+	int password[n];
+		for (int = 0, i < n, i++){
+			password[i] = (rand() % 7) +1;	
+		}
+	}
 	int inputs = 0;
 
 	forever {
@@ -35,11 +47,12 @@ int main() {
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
 		if (btn != 0 && btn == password[inputs]) {
+			btnpress(btn);
 			inputs++;
 		}
 		else if (btn != 0 && btn != password[inputs]) {
 			inputs = 0;
-			fail_message();
+			fail_message();		
 		}
 
 		if (inputs == PASSWORD_LENGTH) {
@@ -47,20 +60,38 @@ int main() {
 			unlock();
 		}
 	}
-
 	return 0;
 }
 
 void fail_message() {
+	if (getswitches ==0){
 	char* message = "Sorry try again!";
 	display_string(0, message);
 	display_update();
+	soundfail();
+	}
+	else {
+	char* message = "Rip! BS!";
+	display_string(0, message);
+	display_update();
+	soundfailR();
+	}
 }
 
+
 void unlock() {
+	if (getswitches ==0){
 	char* message = "Congratulations!";
 	display_string(0, message);
 	display_update();
+	soundunlock();
+	}
+	else{
+	char* message = "IS LIT FAAAAM!";
+	display_string(0, message);
+	display_update();
+	soundunlockR();	
+	}
 }
 
 void display_btn(int btn) {
@@ -128,6 +159,6 @@ int debug_mode() {
 	return getsw() & 0x8;
 }
 
-int getsw() {
+int getswitches(){
 	return (PORTD >> 8) & 0xF;
 }
