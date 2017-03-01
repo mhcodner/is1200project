@@ -1,5 +1,4 @@
 #include <pic32mx.h>
-#include <stdlib.h>
 #include <stdint.h>
 
 #include "mipslab.h"
@@ -7,7 +6,7 @@
 #include "sound.h"
 
 #define forever for (;;)
-#define PASSWORD_LENGTH 5
+#define PASSWORD_LENGTH 4
 #define TMR2PERIOD ((80000000 / 256) / 10)
 
 int getbtns();
@@ -17,17 +16,19 @@ void init();
 void display_btn();
 void unlock();
 void fail_message();
+unsigned rand();
 
+unsigned short lfsr = 0xACE1u;
+unsigned bit;
 
 int main() {
 	init();
 	int n, i;
-	srand(2348);
 	//Robin mode is activated if any of the switches is on
-	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
+	int password[PASSWORD_LENGTH] = { 1, 2, 4, 8}; // can not contain 0
 	if (getswitches() != 0) {
 		for (i = 0; i < PASSWORD_LENGTH; i++){
-			password[i] = (rand() % 7) + 1;	
+			password[i] = (int)(rand() % 7) + 1;
 		}
 	}
 	int inputs = 0;
@@ -158,4 +159,9 @@ int debug_mode() {
 
 int getswitches(){
 	return (PORTD >> 8) & 0xF;
+}
+
+unsigned rand() {
+	bit  = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5) ) & 1;
+	return lfsr =  (lfsr >> 1) | (bit << 15);
 }

@@ -1,11 +1,11 @@
 #include <pic32mx.h>
 #include "sound.h"
 
-#define TMR3PERIOD ((80000000 / 256) / 10)
-#define T3CON PIC32_R(0x0A00)
-#define T3CONSET PIC32_R(0x0A08)
-#define TMR3 PIC32_R(0x0A10)
-#define PR3 PIC32_R(0x0A20)
+// #define TMR3PERIOD ((80000000 / 256) / 10)
+// #define T3CON PIC32_R(0x0A00)
+// #define T3CONSET PIC32_R(0x0A08)
+// #define TMR3 PIC32_R(0x0A10)
+// #define PR3 PIC32_R(0x0A20)
 
 void SOUND_init() {
 	OC1CON = 0b01110;    				// set output compare 1 module to PMW mode
@@ -13,7 +13,7 @@ void SOUND_init() {
 	OC1CON |= 0x8000;    				// turn on output compare 1 module 
 }
 // makes the sound
-void SOUND_beep(double freq, int length) {
+void SOUND_beep(int freq, int length) {
 	if (freq == 0){
 		PR3 = 0;
 		OC1CON = 0x000E;    			// turn on output compare 1 module 
