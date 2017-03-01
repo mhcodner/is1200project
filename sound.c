@@ -15,13 +15,13 @@ void SOUND_init() {
 
 }
 // makes the sound
-void SOUND_beep(int freq, int length) {
+void SOUND_beep(double freq, int length) {
 	if (freq == 0){
 		PR3 = 0;
 		OC1CON = 0x000E;    			// turn on output compare 1 module 
 	}
 	PR3 = ((80000000 / 64)) / freq;
-	OC1RS = (PR3 / 2);     
+	OC1RS = (PR3 / 2);
 // not sure if this works, and still gotta learn how to make it buzz for a certain time.
 // shall we do it like in lab 3 with time out count?
 }
