@@ -9,3 +9,4 @@ void soundunlock();
 void soundfailR();
 void soundunlockR();
 void btnpress(int getbtns);
+void soundlength (int tempo);
