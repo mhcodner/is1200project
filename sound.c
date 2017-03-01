@@ -7,7 +7,7 @@ void SOUND_init() {
 	OC1CON = 0b01110;    				// set output compare 1 module to PMW mode
 	T3CONSET = 0x8000;      			// start the timer 15th bit
 	OC1CON |= 0x8000;    				// turn on output compare 1 module 
-	OC1RS = PR3 / 2;         			// set duty cycle // change this
+	OC1RS = PR3 / 2;         			// set duty cycle 
 
 }
 
