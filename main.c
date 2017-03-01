@@ -63,13 +63,13 @@ int main() {
 
 void fail_message() {
 	if (fun_mode()){
-		char* message = "Sorry try again!";
+		char* message = "Rip! BS!";
 		display_string(0, message);
 		display_update();
 		soundfail();
 	}
 	else {
-		char* message = "Rip! BS!";
+		char* message = "Sorry try again!";
 		display_string(0, message);
 		display_update();
 		soundfailR();
@@ -79,13 +79,13 @@ void fail_message() {
 
 void unlock() {
 	if (fun_mode()){
-		char* message = "Congratulations!";
+		char* message = "IS LIT FAAAAM!";
 		display_string(0, message);
 		display_update();
 		soundunlock();
 	}
 	else{
-		char* message = "IS LIT FAAAAM!";
+		char* message = "Congratulations!";
 		display_string(0, message);
 		display_update();
 		soundunlockR();	
