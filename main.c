@@ -25,7 +25,7 @@ int main() {
 	init();
 	int i;
 	//Robin mode is activated if any of the switches is on
-	int password[PASSWORD_LENGTH] = { 1, 2, 4, 8}; // can not contain 0
+	int password[PASSWORD_LENGTH] = { 1, 2, 4, 8 }; // can not contain 0
 	if (fun_mode()) {
 		for (i = 0; i < PASSWORD_LENGTH; i++){
 			password[i] = (int)(rand() % 7) + 1;
@@ -41,6 +41,11 @@ int main() {
 			display_btn(btn);
 			display_update();
 		}
+
+		if (getswitches() & 0x2)
+			MOTOR_spin();
+		else
+			MOTOR_stop();
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
@@ -140,15 +145,6 @@ void init() {
 }
 
 int getbtns(){
-	int timeoutcount = 0;
-
-	forever {
-		if (IFS(0) & 0x100 && ++timeoutcount == 5)
-			break;
-	}
-	IFSCLR(0) = 0x100;
-	timeoutcount = 0;
-
 	// Return an integer representation of the buttons currently pressed
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
 }
