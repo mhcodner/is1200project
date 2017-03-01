@@ -26,17 +26,17 @@ void SOUND_beep(double freq, int length) {
 
 // Plays in case of a fail
 void soundfail(){
-	SOUND_beep (20, 3);
+	SOUND_beep (20, 2);
 	SOUND_beep (40, 1);
-	SOUND_beep (20, 3);
+	SOUND_beep (20, 2);
 	SOUND_beep (40, 1);
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
-	SOUND_beep (165,2);
-	SOUND_beep (160.25,2);
-	SOUND_beep (156.33,2);
-	SOUND_beep (147.37,4);
+	SOUND_beep (165,1);
+	SOUND_beep (160.25,1);
+	SOUND_beep (156.33,1);
+	SOUND_beep (147.37,2);
 }
 
 void soundunlock(){                     //Plays during the unlock #Mary had a little lamb
