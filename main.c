@@ -42,9 +42,12 @@ int main() {
 		if (debug_mode()) {
 			display_string(1, itoaconv(password[inputs]));
 			display_string(2, itoaconv(inputs));
-			display_btn(btn);
-			display_update();
 		}
+		else {
+			display_string(1, "");
+			display_string(2, "");
+		}
+		display_btn(btn);
 
 		MOTOR_spin();
 
