@@ -21,6 +21,7 @@ void SOUND_beep(double freq, int length) {
 	PR3 = ((80000000 / 64)) / freq;
 	OC1RS = (PR3 / 2);
 	soundlength(tempo / length);
+	delay(500);
 }
 
 // Plays in case of a fail
@@ -32,10 +33,10 @@ void soundfail(){
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
-	SOUND_beep (659.25,2);
-	SOUND_beep (622.25,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (554.37,4);
+	SOUND_beep (165,2);
+	SOUND_beep (160.25,2);
+	SOUND_beep (156.33,2);
+	SOUND_beep (147.37,4);
 }
 
 void soundunlock(){                     //Plays during the unlock #Mary had a little lamb
