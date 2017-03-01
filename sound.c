@@ -25,10 +25,10 @@ void SOUND_beep(double freq, int length) {
 
 // Plays in case of a fail
 void soundfail(){
-	SOUND_beep (200, 2);
-	SOUND_beep (400, 1);
-	SOUND_beep (200, 2);
-	SOUND_beep (400, 1);
+	SOUND_beep (20, 3);
+	SOUND_beep (40, 1);
+	SOUND_beep (20, 3);
+	SOUND_beep (40, 1);
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
