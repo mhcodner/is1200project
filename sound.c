@@ -21,7 +21,7 @@ void SOUND_beep(double freq, int length) {
 	PR3 = ((80000000 / 64)) / freq;
 	OC1RS = (PR3 / 2);
 	soundlength(tempo / length);
-	delay(500);
+	delay();
 }
 
 // Plays in case of a fail
