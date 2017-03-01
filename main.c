@@ -16,24 +16,19 @@ void display_btn();
 void unlock();
 void fail_message();
 
+
 int main() {
 	init();
 	int n, i;
-	time_t t;
-	srand((unsigned) time(&t));
+	srand(time(NULL));
 	//Robin mode is activated if any of the switches is on
-	if (getswitches() == 0) {
-		int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
-	}
-	else {
-	n = rand() % 20;
-	int password[n];
-		for (int = 0, i < n, i++){
-			password[i] = (rand() % 7) +1;	
+	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
+	if (getswitches() != 0) {
+		for (i = 0, i < PASSWORD_LENGTH, i++){
+			password[i] = (rand() % 7) + 1;	
 		}
 	}
 	int inputs = 0;
-
 	forever {
 		int btn = getbtns();
 		int previous = btn;
