@@ -26,10 +26,10 @@ void SOUND_beep(double freq, int length) {
 
 // Plays in case of a fail
 void soundfail(){
-	SOUND_beep (20, 1);
-	SOUND_beep (40, 1);
-	SOUND_beep (20, 1);
-	SOUND_beep (40, 1);
+	SOUND_beep (175, 1);
+	SOUND_beep (87, 1);
+	SOUND_beep (175, 1);
+	SOUND_beep (87, 1);
 	SOUND_beep (0, 2);
 }
 
@@ -90,64 +90,64 @@ void soundlength (int tempo){
 //Outputs different sound for different button combos, we can adjust frequencies later.
 void btnpress (int getbtns) {
 	switch (getbtns){
-		case 1:
-			SOUND_beep (159.25,1);
+		case 1:                           //Starts at E and goes up (case 2 is f)
+			SOUND_beep (82,1);
 			SOUND_beep (0, 1);
 			break;
 		case 2:
-			SOUND_beep (259.25,1);
+			SOUND_beep (87,1);
 			SOUND_beep (0, 1);
 			break;
 		case 3:
-			SOUND_beep (359.25,1);
+			SOUND_beep (92,1);
 			SOUND_beep (0, 1);
 			break;
 		case 4:
-			SOUND_beep (459.25,1);
+			SOUND_beep (98,1);
 			SOUND_beep (0, 1);
 			break;
 		case 5:
-			SOUND_beep (559.25,1);
+			SOUND_beep (104,1);
 			SOUND_beep (0, 1);
 			break;
 		case 6:
-			SOUND_beep (659.25,1);
+			SOUND_beep (110,1);
 			SOUND_beep (0, 1);
 			break;
 		case 7:
-			SOUND_beep (759.25,1);
+			SOUND_beep (117,1);
 			SOUND_beep (0, 1);
 			break;
 		case 8:
-			SOUND_beep (709.25,1);
+			SOUND_beep (123,1);
 			SOUND_beep (0, 1);
 			break;
 		case 9:
-			SOUND_beep (609.25,1);
+			SOUND_beep (131,1);
 			SOUND_beep (0, 1);
 			break;
 		case 10:
-			SOUND_beep (509.25,1);
+			SOUND_beep (147,1);
 			SOUND_beep (0, 1);
 			break;
 		case 11:
-			SOUND_beep (409.25,1);
+			SOUND_beep (165,1);
 			SOUND_beep (0, 1);
 			break;
 		case 12:
-			SOUND_beep (309.25,1);
+			SOUND_beep (175,1);
 			SOUND_beep (0, 1);
 			break;
 		case 13:
-			SOUND_beep (209.25,1);
+			SOUND_beep (185,1);
 			SOUND_beep (0, 1);
 			break;
 		case 14:
-			SOUND_beep (109.25,1);
+			SOUND_beep (196.25,1);
 			SOUND_beep (0, 1);
 			break;
 		case 15:
-			SOUND_beep (859.25,1);
+			SOUND_beep (220,1);
 			SOUND_beep (0, 1);
 			break;
 	}
