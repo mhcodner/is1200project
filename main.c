@@ -23,10 +23,10 @@ unsigned bit;
 
 int main() {
 	init();
-	int n, i;
+	int i;
 	//Robin mode is activated if any of the switches is on
 	int password[PASSWORD_LENGTH] = { 1, 2, 4, 8}; // can not contain 0
-	if (getswitches() != 0) {
+	if (fun_mode()) {
 		for (i = 0; i < PASSWORD_LENGTH; i++){
 			password[i] = (int)(rand() % 7) + 1;
 		}
@@ -62,7 +62,7 @@ int main() {
 }
 
 void fail_message() {
-	if (getswitches() == 0){
+	if (fun_mode()){
 		char* message = "Sorry try again!";
 		display_string(0, message);
 		display_update();
@@ -78,7 +78,7 @@ void fail_message() {
 
 
 void unlock() {
-	if (getswitches() == 0){
+	if (fun_mode()){
 		char* message = "Congratulations!";
 		display_string(0, message);
 		display_update();
@@ -151,6 +151,10 @@ int getbtns(){
 
 	// Return an integer representation of the buttons currently pressed
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
+}
+
+int fun_mode() {
+	return getswitches() & 1;
 }
 
 int debug_mode() {
