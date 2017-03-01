@@ -1,14 +1,11 @@
 #include <pic32mx.h>
 #include "sound.h"
 
-int timeoutcount = 0;
-
 void SOUND_init() {
-	OC1CON = 0b01110;    				// set output compare 1 module to PMW mode
+	OC1CON = 0b01110;    				// set output compare 1 module to PWM mode
 	T3CONSET = 0x8000;      			// start the timer 15th bit
 	OC1CON |= 0x8000;    				// turn on output compare 1 module 
 	OC1RS = PR3 / 2;         			// set duty cycle 
-
 }
 
 // makes the sound
@@ -19,7 +16,7 @@ void SOUND_beep(double freq, int length) {
 	}
 	int tempo = 8;
 	PR3 = ((80000000 / 64)) / freq;
-	OC1RS = (PR3 / 2);
+	OC1RS = PR3 / 2;
 	soundlength(tempo / length);
 	delay();
 }
@@ -72,13 +69,12 @@ void soundunlockR() {                  // Starwars theme?
 	SOUND_beep (0, 2);
 }
 
-// Defines how long the sond is played for
+// Defines how long the sound is played for
 void soundlength (int tempo){
 	int i = 0;
 	while(1){
-		if(IFS(0) & 0x100){   // if flag of Timer 2 is on (the button is pressed)
+		if(IFS(0) & 0x100){   // if flag of Timer 2 is on (every 100ms)
 			i++;
-			timeoutcount++;
 			IFSCLR(0) = 0x100;  // clear flag
 		}
 		if(i == tempo){
