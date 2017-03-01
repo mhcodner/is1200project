@@ -20,10 +20,10 @@ void SOUND_beep(double freq, int length) {
 		PR3 = 0;
 		OC1CON = 0x000E;    			// turn on output compare 1 module 
 	}
+	int tempo = 8;
 	PR3 = ((80000000 / 64)) / freq;
 	OC1RS = (PR3 / 2);
-// not sure if this works, and still gotta learn how to make it buzz for a certain time.
-// shall we do it like in lab 3 with time out count?
+	soundlength(tempo / length);
 }
 
 // Plays in case of a fail
@@ -66,6 +66,19 @@ void soundunlockR() {                  // Starwars theme?
 	SOUND_beep (523.23,2);
 	SOUND_beep (880.00,2);
 	SOUND_beep (523.23,2);
+}
+// Defines how long the sond is played for
+void soundlength (int tempo){
+  int i = 0;
+  while(1){
+    if(IFS(0) & 0x100){   // if flag of Timer 2 is on (the button is pressed)
+        i++;
+        timeoutcount++;
+        IFSCLR(0) = 0x100;  // clear flag
+      }
+    if(i == tempo){
+      break;
+    }
 }
 //Outputs different sound for different button combos, we can adjust frequencies later.
 void btnpress (int getbtns) {
@@ -117,3 +130,4 @@ void btnpress (int getbtns) {
 			break;
 	}
 }
+
