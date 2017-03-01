@@ -91,5 +91,29 @@ void btnpress (int getbtns) {
 		case 7:
 			SOUND_beep (759.25,2);
 			break;
+		case 8:
+			SOUND_beep (709.25,2);
+			break;
+		case 9:
+			SOUND_beep (609.25,2);
+			break;
+		case 10:
+			SOUND_beep (509.25,2);
+			break;
+		case 11:
+			SOUND_beep (409.25,2);
+			break;
+		case 12:
+			SOUND_beep (309.25,2);
+			break;
+		case 13:
+			SOUND_beep (209.25,2);
+			break;
+		case 14:
+			SOUND_beep (109.25,2);
+			break;
+		case 15:
+			SOUND_beep (859.25,2);
+			break;
 	}
 }
