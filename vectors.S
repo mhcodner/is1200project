@@ -3,6 +3,16 @@
 	ori \reg, \reg, %lo(\val)
 .endm
 
+.macro	PUSH reg
+	addi	$sp,$sp,-4
+	sw	\reg,0($sp)
+.endm
+
+.macro	POP reg
+	lw	\reg,0($sp)
+	addi	$sp,$sp,4
+.endm
+
 .macro STUB num
 	.align 4
 	.section .vector_new_\num,"ax",@progbits
@@ -50,3 +60,28 @@ _gen_exception:
 	nop
 
 .end _gen_exception
+
+
+.global delay
+delay:
+  PUSH $ra
+  li $t1, 1000        # load 1000 ms to register t1 (t1 is like ms)
+  li $t2, 0           # int i = 0
+  li $t3, 13000000     # constant from code
+
+  while:
+    ble $t1, 0, finish  # branch less or equal for 0 and t1
+    nop                 # no operation
+    sub $t1, $t1, 1     # ms = ms - 1
+
+    for:
+      beq $t2, $t3, while #  i < constant;
+      nop
+      addi $t2, $t2, 1    # i = i + 1
+      j for               # go back to start of loop
+      nop
+
+finish:
+  POP $ra
+  jr $ra
+  nop
