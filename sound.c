@@ -30,6 +30,7 @@ void soundfail(){
 	SOUND_beep (40, 1);
 	SOUND_beep (20, 2);
 	SOUND_beep (40, 1);
+	SOUND_beep (0, 2);
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
@@ -37,6 +38,7 @@ void soundfailR(){                      //Wah Wah Waaaah
 	SOUND_beep (160.25,1);
 	SOUND_beep (156.33,1);
 	SOUND_beep (147.37,2);
+	SOUND_beep (0, 2);
 }
 
 void soundunlock(){                     //Plays during the unlock #Mary had a little lamb

@@ -66,13 +66,13 @@ void fail_message() {
 		char* message = "Rip! BS!";
 		display_string(0, message);
 		display_update();
-		soundfail();
+		soundfailR();
 	}
 	else {
 		char* message = "Sorry try again!";
 		display_string(0, message);
 		display_update();
-		soundfailR();
+		soundfail();
 	}
 }
 
@@ -82,13 +82,13 @@ void unlock() {
 		char* message = "IS LIT FAAAAM!";
 		display_string(0, message);
 		display_update();
-		soundunlock();
+		soundunlockR();
 	}
 	else{
 		char* message = "Congratulations!";
 		display_string(0, message);
 		display_update();
-		soundunlockR();	
+		soundunlock();	
 	}
 }
 
