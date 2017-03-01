@@ -26,48 +26,50 @@ void SOUND_beep(double freq, int length) {
 
 // Plays in case of a fail
 void soundfail(){
-	SOUND_beep (20, 2);
+	SOUND_beep (20, 1);
 	SOUND_beep (40, 1);
-	SOUND_beep (20, 2);
+	SOUND_beep (20, 1);
 	SOUND_beep (40, 1);
 	SOUND_beep (0, 2);
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
 	SOUND_beep (165,1);
-	SOUND_beep (160.25,1);
-	SOUND_beep (156.33,1);
-	SOUND_beep (147.37,2);
+	SOUND_beep (156.25,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (138.37,2);
 	SOUND_beep (0, 2);
 }
 
 void soundunlock(){                     //Plays during the unlock #Mary had a little lamb
-	SOUND_beep (659.25,2); //e
-	SOUND_beep (587.33,2); //d
-	SOUND_beep (523.23,2); //c
-	SOUND_beep (587.33,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (659.25,2);
+	SOUND_beep (165,1); //e
+	SOUND_beep (147.33,1); //d
+	SOUND_beep (131.23,1); //c
+	SOUND_beep (147.33,1);
+	SOUND_beep (165,1);
+	SOUND_beep (165,1);
+	SOUND_beep (165,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (165,1);
+	SOUND_beep (165,1);
+	SOUND_beep (165,1);
+	SOUND_beep (0, 2);
 }
 
 void soundunlockR() {                  // Starwars theme?
-	SOUND_beep (659.25,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (659.25,2);
-	SOUND_beep (987.77,2);
-	SOUND_beep (587.33,2);
-	SOUND_beep (523.23,2);
-	SOUND_beep (880.00,2);
-	SOUND_beep (523.23,2);
+	SOUND_beep (165,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (165,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (165,1);
+	SOUND_beep (247,1);
+	SOUND_beep (147.33,1);
+	SOUND_beep (131.23,1);
+	SOUND_beep (220,1);
+	SOUND_beep (131.23,1);
+	SOUND_beep (0, 2);
 }
 
 // Defines how long the sond is played for
@@ -89,49 +91,64 @@ void soundlength (int tempo){
 void btnpress (int getbtns) {
 	switch (getbtns){
 		case 1:
-			SOUND_beep (159.25,2);
+			SOUND_beep (159.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 2:
-			SOUND_beep (259.25,2);
+			SOUND_beep (259.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 3:
-			SOUND_beep (359.25,2);
+			SOUND_beep (359.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 4:
-			SOUND_beep (459.25,2);
+			SOUND_beep (459.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 5:
-			SOUND_beep (559.25,2);
+			SOUND_beep (559.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 6:
-			SOUND_beep (659.25,2);
+			SOUND_beep (659.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 7:
-			SOUND_beep (759.25,2);
+			SOUND_beep (759.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 8:
-			SOUND_beep (709.25,2);
+			SOUND_beep (709.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 9:
-			SOUND_beep (609.25,2);
+			SOUND_beep (609.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 10:
-			SOUND_beep (509.25,2);
+			SOUND_beep (509.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 11:
-			SOUND_beep (409.25,2);
+			SOUND_beep (409.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 12:
-			SOUND_beep (309.25,2);
+			SOUND_beep (309.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 13:
-			SOUND_beep (209.25,2);
+			SOUND_beep (209.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 14:
-			SOUND_beep (109.25,2);
+			SOUND_beep (109.25,1);
+			SOUND_beep (0, 1);
 			break;
 		case 15:
-			SOUND_beep (859.25,2);
+			SOUND_beep (859.25,1);
+			SOUND_beep (0, 1);
 			break;
 	}
 }
