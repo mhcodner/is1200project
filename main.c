@@ -35,6 +35,10 @@ int main() {
 	forever {
 		int btn = getbtns();
 		int previous = btn;
+		if (IFS(0) & 0x400) {
+			display_string(0, "OC2IF");
+			IFSCLR(0) = 0x400;
+		}
 		if (debug_mode()) {
 			display_string(1, itoaconv(password[inputs]));
 			display_string(2, itoaconv(inputs));
@@ -42,10 +46,7 @@ int main() {
 			display_update();
 		}
 
-		if (getswitches() & 0x2)
-			MOTOR_spin();
-		else
-			MOTOR_stop();
+		MOTOR_spin();
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 

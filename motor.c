@@ -2,8 +2,8 @@
 #include "motor.h"
 
 void MOTOR_init() {
-	OC2CONSET = 0x21;
-	OC2RS = PR2 / 2;
+	OC2CONSET = 0x8021;
+	OC2R = PR2 / 2;
 }
 
 void MOTOR_spin() {
