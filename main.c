@@ -1,4 +1,5 @@
 #include <pic32mx.h>
+#include <stdlib.h>
 #include <stdint.h>
 
 #include "mipslab.h"
@@ -11,6 +12,7 @@
 
 int getbtns();
 int getswitches();
+int debug_mode();
 void init();
 void display_btn();
 void unlock();
@@ -20,11 +22,11 @@ void fail_message();
 int main() {
 	init();
 	int n, i;
-	srand(time(NULL));
+	srand(2348);
 	//Robin mode is activated if any of the switches is on
 	int password[PASSWORD_LENGTH] = { 10, 2, 4, 9, 5}; // can not contain 0
 	if (getswitches() != 0) {
-		for (i = 0, i < PASSWORD_LENGTH, i++){
+		for (i = 0; i < PASSWORD_LENGTH; i++){
 			password[i] = (rand() % 7) + 1;	
 		}
 	}
@@ -59,33 +61,33 @@ int main() {
 }
 
 void fail_message() {
-	if (getswitches ==0){
-	char* message = "Sorry try again!";
-	display_string(0, message);
-	display_update();
-	soundfail();
+	if (getswitches() == 0){
+		char* message = "Sorry try again!";
+		display_string(0, message);
+		display_update();
+		soundfail();
 	}
 	else {
-	char* message = "Rip! BS!";
-	display_string(0, message);
-	display_update();
-	soundfailR();
+		char* message = "Rip! BS!";
+		display_string(0, message);
+		display_update();
+		soundfailR();
 	}
 }
 
 
 void unlock() {
-	if (getswitches ==0){
-	char* message = "Congratulations!";
-	display_string(0, message);
-	display_update();
-	soundunlock();
+	if (getswitches() == 0){
+		char* message = "Congratulations!";
+		display_string(0, message);
+		display_update();
+		soundunlock();
 	}
 	else{
-	char* message = "IS LIT FAAAAM!";
-	display_string(0, message);
-	display_update();
-	soundunlockR();	
+		char* message = "IS LIT FAAAAM!";
+		display_string(0, message);
+		display_update();
+		soundunlockR();	
 	}
 }
 
@@ -151,7 +153,7 @@ int getbtns(){
 }
 
 int debug_mode() {
-	return getsw() & 0x8;
+	return getswitches() & 0x8;
 }
 
 int getswitches(){
