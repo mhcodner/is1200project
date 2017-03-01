@@ -12,7 +12,7 @@ void SOUND_init() {
 void SOUND_beep(double freq, int length) {
 	if (freq == 0){
 		PR3 = 0;
-		OC1CON = 0x000E;    			// turn on output compare 1 module 
+		OC1CON = 0xE;    				// turn on output compare 1 module 
 	}
 	int tempo = 8;
 	PR3 = ((80000000 / 64)) / freq;
@@ -26,7 +26,7 @@ void soundfail(){
 	SOUND_beep (87, 1);
 	SOUND_beep (175, 1);
 	SOUND_beep (87, 1);
-	SOUND_beep (0, 2);
+	SOUND_beep (0, 1);
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
@@ -34,7 +34,7 @@ void soundfailR(){                      //Wah Wah Waaaah
 	SOUND_beep (156.25,1);
 	SOUND_beep (147.33,1);
 	SOUND_beep (138.37,2);
-	SOUND_beep (0, 2);
+	SOUND_beep (0, 1);
 }
 
 void soundunlock(){                     //Plays during the unlock #Mary had a little lamb
@@ -51,7 +51,7 @@ void soundunlock(){                     //Plays during the unlock #Mary had a li
 	SOUND_beep (165,1);
 	SOUND_beep (165,1);
 	SOUND_beep (165,1);
-	SOUND_beep (0, 2);
+	SOUND_beep (0, 1);
 }
 
 void soundunlockR() {                  // Starwars theme?
@@ -65,7 +65,7 @@ void soundunlockR() {                  // Starwars theme?
 	SOUND_beep (131.23,1);
 	SOUND_beep (220,1);
 	SOUND_beep (131.23,1);
-	SOUND_beep (0, 2);
+	SOUND_beep (0, 1);
 }
 
 // Defines how long the sound is played for
