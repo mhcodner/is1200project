@@ -44,7 +44,6 @@ int main() {
 			display_string(2, "");
 		}
 		display_btn(btn);
-		MOTOR_spin();
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
@@ -82,7 +81,10 @@ void fail_message() {
 
 
 void unlock() {
+	int timeouts = 10;
+	int timeoutcount = 0;
 	if (fun_mode()){
+		timeouts = 300;
 		char* message = "IS LIT FAAAAM!";
 		display_string(0, message);
 		display_update();
@@ -94,6 +96,15 @@ void unlock() {
 		display_update();
 		soundunlock();
 	}
+	
+	MOTOR_spin();
+	forever {
+		if (IFS(0) & 0x100 && ++timeoutcount == timeouts) {
+			IFSCLR(0) = 0x100;
+			break;
+		}
+	}
+	MOTOR_stop();
 }
 
 void display_btn(int btn) {
