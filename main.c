@@ -35,10 +35,6 @@ int main() {
 	forever {
 		int btn = getbtns();
 		int previous = btn;
-		if (IFS(0) & 0x400) {
-			display_string(0, "OC2IF");
-			IFSCLR(0) = 0x400;
-		}
 		if (debug_mode()) {
 			display_string(1, itoaconv(password[inputs]));
 			display_string(2, itoaconv(inputs));
@@ -48,17 +44,17 @@ int main() {
 			display_string(2, "");
 		}
 		display_btn(btn);
-		btnpress(btn);
 		MOTOR_spin();
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
 		if (btn != 0 && btn == password[inputs]) {
 			inputs++;
+			btnpress(btn);
 		}
 		else if (btn != 0 && btn != password[inputs]) {
 			inputs = 0;
-			fail_message();		
+			fail_message();
 		}
 
 		if (inputs == PASSWORD_LENGTH) {
@@ -71,32 +67,32 @@ int main() {
 
 void fail_message() {
 	if (fun_mode()){
-		soundfailR();
 		char* message = "Rip! BS!";
 		display_string(0, message);
 		display_update();
+		soundfailR();
 	}
 	else {
-		soundfail();
 		char* message = "Sorry try again!";
 		display_string(0, message);
-		display_update();		
+		display_update();
+		soundfail();	
 	}
 }
 
 
 void unlock() {
 	if (fun_mode()){
-		soundunlockR();
 		char* message = "IS LIT FAAAAM!";
 		display_string(0, message);
-		display_update();	
+		display_update();
+		soundunlockR();
 	}
 	else{
-		soundunlock();
 		char* message = "Congratulations!";
 		display_string(0, message);
-		display_update();	
+		display_update();
+		soundunlock();
 	}
 }
 
@@ -148,6 +144,7 @@ void init() {
 }
 
 int getbtns(){
+	delay();
 	// Return an integer representation of the buttons currently pressed
 	return ((PORTD >> 4) & 0xE) | ((PORTF >> 1) & 1);
 }
