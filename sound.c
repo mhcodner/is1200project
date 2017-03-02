@@ -31,23 +31,23 @@ void soundfail(){
 
 void soundfailR(){                      //Wah Wah Waaaah
 	SOUND_beep (165,1);
-	SOUND_beep (156.25,1);
-	SOUND_beep (147.33,1);
-	SOUND_beep (138.37,2);
+	SOUND_beep (156,1);
+	SOUND_beep (147,1);
+	SOUND_beep (138,2);
 	SOUND_beep (0, 1);
 }
 
 void soundunlock(){                     //Plays during the unlock #Mary had a little lamb
 	SOUND_beep (165,1); //e
-	SOUND_beep (147.33,1); //d
-	SOUND_beep (131.23,1); //c
-	SOUND_beep (147.33,1);
+	SOUND_beep (147,1); //d
+	SOUND_beep (131,1); //c
+	SOUND_beep (147,1);
 	SOUND_beep (165,1);
 	SOUND_beep (165,1);
 	SOUND_beep (165,1);
-	SOUND_beep (147.33,1);
-	SOUND_beep (147.33,1);
-	SOUND_beep (147.33,1);
+	SOUND_beep (147,1);
+	SOUND_beep (147,1);
+	SOUND_beep (147,1);
 	SOUND_beep (165,1);
 	SOUND_beep (165,1);
 	SOUND_beep (165,1);
@@ -56,15 +56,15 @@ void soundunlock(){                     //Plays during the unlock #Mary had a li
 
 void soundunlockR() {                  // Starwars theme?
 	SOUND_beep (165,1);
-	SOUND_beep (147.33,1);
+	SOUND_beep (147,1);
 	SOUND_beep (165,1);
-	SOUND_beep (147.33,1);
+	SOUND_beep (147,1);
 	SOUND_beep (165,1);
 	SOUND_beep (247,1);
-	SOUND_beep (147.33,1);
-	SOUND_beep (131.23,1);
+	SOUND_beep (147,1);
+	SOUND_beep (131,1);
 	SOUND_beep (220,1);
-	SOUND_beep (131.23,1);
+	SOUND_beep (131,1);
 	SOUND_beep (0, 1);
 }
 
@@ -138,7 +138,7 @@ void btnpress (int getbtns) {
 			SOUND_beep (0, 1);
 			break;
 		case 14:
-			SOUND_beep (196.25,1);
+			SOUND_beep (196,1);
 			SOUND_beep (0, 1);
 			break;
 		case 15:
