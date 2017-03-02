@@ -14,6 +14,9 @@ void SOUND_beep(int freq, int length) {
 		PR3 = 0;
 		OC1CON = 0xE;    				// turn on output compare 1 module 
 	}
+	else {
+		OC1CON |= 0x8000;
+	}
 	int tempo = 8;
 	PR3 = ((80000000 / 64)) / freq;
 	OC1RS = PR3 / 2;
