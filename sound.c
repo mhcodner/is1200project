@@ -9,7 +9,7 @@ void SOUND_init() {
 }
 
 // makes the sound
-void SOUND_beep(double freq, int length) {
+void SOUND_beep(int freq, int length) {
 	if (freq == 0){
 		PR3 = 0;
 		OC1CON = 0xE;    				// turn on output compare 1 module 
@@ -30,10 +30,10 @@ void soundfail(){
 }
 
 void soundfailR(){                      //Wah Wah Waaaah
-	SOUND_beep (165,1);
-	SOUND_beep (156,1);
-	SOUND_beep (147,1);
-	SOUND_beep (138,2);
+	SOUND_beep (165,2);
+	SOUND_beep (156,2);
+	SOUND_beep (147,2);
+	SOUND_beep (138,1);
 	SOUND_beep (0, 1);
 }
 
