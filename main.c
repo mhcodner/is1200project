@@ -48,13 +48,12 @@ int main() {
 			display_string(2, "");
 		}
 		display_btn(btn);
-
+		btnpress(btn);
 		MOTOR_spin();
 
 		while ((btn = getbtns()) == previous); // Waits until change of state
 
 		if (btn != 0 && btn == password[inputs]) {
-			btnpress(btn);
 			inputs++;
 		}
 		else if (btn != 0 && btn != password[inputs]) {
@@ -72,32 +71,32 @@ int main() {
 
 void fail_message() {
 	if (fun_mode()){
+		soundfailR();
 		char* message = "Rip! BS!";
 		display_string(0, message);
 		display_update();
-		soundfailR();
 	}
 	else {
+		soundfail();
 		char* message = "Sorry try again!";
 		display_string(0, message);
-		display_update();
-		soundfail();
+		display_update();		
 	}
 }
 
 
 void unlock() {
 	if (fun_mode()){
+		soundunlockR();
 		char* message = "IS LIT FAAAAM!";
 		display_string(0, message);
-		display_update();
-		soundunlockR();
+		display_update();	
 	}
 	else{
+		soundunlock();
 		char* message = "Congratulations!";
 		display_string(0, message);
-		display_update();
-		soundunlock();	
+		display_update();	
 	}
 }
 
